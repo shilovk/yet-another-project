@@ -1,0 +1,23 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image {
+    max-width: 400px;
+}
+
+.title {
+    font-size: 25px;
+    color: #393a34;
+    font-family: 'OpenSansCondensed', Arial, sans-serif;
+    margin: 5px 0;
+}
+
+.description {
+    composes: title;
+    font-size: 15px;
+    font-style: italic;
+    font-family: 'Spectral', Arial, sans-serif;
+}
