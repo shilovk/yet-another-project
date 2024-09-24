@@ -3,11 +3,13 @@ import React from "react";
 import DogImage from "../dog-image/dog-image";
 import styles from "./header.module.css";
 import dogImagePath from '../../images/dog.png';
+import { Logo } from '@ya.praktikum/react-developer-burger-ui-components';
 
 class Header extends React.Component {
     render() {
         return (
             <header className={styles.header}>
+                <Logo />
                 <img src={logo} className={styles.logo} alt="logo"/>
                 <p>
                     Edit <code>src/App.js</code> and save to reload.
