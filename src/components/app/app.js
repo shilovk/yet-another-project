@@ -4,6 +4,9 @@ import Header from "../header/header";
 import VideoPlayer from "../video-player/video-player";
 import AutoPlay from "../video-player/auto-play/auto-play";
 import Modal from "../modal/modal";
+import DissatisfiedButton from "../dissatisfied-button/dissatisfied-button";
+import ChatWithTools from "../chat-with-tools/chat-with-tools";
+import ReactDOM from "react-dom";
 
 class App extends React.Component {
   constructor(props) {
@@ -25,8 +28,18 @@ class App extends React.Component {
   }
 
   render() {
+    const chats = [
+      { id: "id1", name: "name1", lastMessageAt: "lastMessageAt1" },
+      { id: "id2", name: "name2", lastMessageAt: "lastMessageAt2" },
+      { id: "id3", name: "name3", lastMessageAt: "lastMessageAt3" },
+    ];
     return (
       <>
+        <h2>Чаты</h2>
+        {chats.map((chat) => (
+          <ChatWithTools id={chat.id} name={chat.name} lastMessageAt={chat.lastMessageAt} />
+        ))}
+        <DissatisfiedButton />
         <VideoPlayer />
         <AutoPlay />
         <div className={styles.app}>
