@@ -6,7 +6,10 @@ import AutoPlay from "../video-player/auto-play/auto-play";
 import Modal from "../modal/modal";
 import DissatisfiedButton from "../dissatisfied-button/dissatisfied-button";
 import ChatWithTools from "../chat-with-tools/chat-with-tools";
-import ReactDOM from "react-dom";
+import ThemeToggle from "../theme-toggle/theme-toggle";
+import Hi from "../hi/hi";
+import MouseSpy from "../mouse-spy/mouse-spy";
+import Game from "../game/game";
 
 class App extends React.Component {
   constructor(props) {
@@ -35,6 +38,10 @@ class App extends React.Component {
     ];
     return (
       <>
+        <Game />
+        <MouseSpy />
+        <Hi name={'Рудольф'} />
+        <ThemeToggle />
         <h2>Чаты</h2>
         {chats.map((chat) => (
           <ChatWithTools id={chat.id} name={chat.name} lastMessageAt={chat.lastMessageAt} />
