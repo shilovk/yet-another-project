@@ -10,6 +10,7 @@ import ThemeToggle from "../theme-toggle/theme-toggle";
 import Hi from "../hi/hi";
 import MouseSpy from "../mouse-spy/mouse-spy";
 import Game from "../game/game";
+import AgreementForm from "../agreement-form/agreement-form";
 
 class App extends React.Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends React.Component {
     ];
     return (
       <>
+        <AgreementForm />
         <Game />
         <MouseSpy />
         <Hi name={'Рудольф'} />
