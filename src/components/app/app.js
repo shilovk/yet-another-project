@@ -10,6 +10,9 @@ import ThemeToggle from "../theme-toggle/theme-toggle";
 import Hi from "../hi/hi";
 import MouseSpy from "../mouse-spy/mouse-spy";
 import Game from "../game/game";
+import AgreementForm from "../agreement-form/agreement-form";
+import ErrorBoundary from "../error-boundary/error-boundary";
+import ComponentWithError from "../component-with-error/component-with-error";
 
 class App extends React.Component {
   constructor(props) {
@@ -37,18 +40,22 @@ class App extends React.Component {
       { id: "id3", name: "name3", lastMessageAt: "lastMessageAt3" },
     ];
     return (
-      <>
-        <Game />
-        <MouseSpy />
-        <Hi name={'Рудольф'} />
-        <ThemeToggle />
+      <ErrorBoundary>
+        {/* если в компоненте RestOfTheApp или любом его дочернем компоненте */}
+        {/* возникнет ошибка, она будет обработана в ErrorBoundary */}
+        <ComponentWithError />
+        <AgreementForm/>
+        <Game/>
+        <MouseSpy/>
+        <Hi name={'Рудольф'}/>
+        <ThemeToggle/>
         <h2>Чаты</h2>
         {chats.map((chat) => (
-          <ChatWithTools id={chat.id} name={chat.name} lastMessageAt={chat.lastMessageAt} />
+          <ChatWithTools id={chat.id} name={chat.name} lastMessageAt={chat.lastMessageAt}/>
         ))}
-        <DissatisfiedButton />
-        <VideoPlayer />
-        <AutoPlay />
+        <DissatisfiedButton/>
+        <VideoPlayer/>
+        <AutoPlay/>
         <div className={styles.app}>
           <button onClick={this.handleOpenModal}>Открыть модальное окно</button>
           {this.state.visible && (
@@ -58,8 +65,8 @@ class App extends React.Component {
             </Modal>
           )}
         </div>
-        <Header />
-      </>
+        <Header/>
+      </ErrorBoundary>
     );
   }
 }
