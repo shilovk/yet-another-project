@@ -17,11 +17,14 @@ import RandomMovie from "../random-movie/random-movie";
 import UserPage from "../user-page/user-page";
 import { LoginContext } from '../../services/login-context.js';
 import Counter from "../counter/counter";
-import {Registration} from "../flight/registration";
-import { counterSlice } from "../../services/actions/counter_slice"
-import {useDispatch} from "react-redux";
+import { Registration } from "../flight/registration";
+import { counterSlice } from "../../services/actions/counter_slice";
+import { useDispatch } from "react-redux";
 import { addTodo } from "../../services/actions/new_actions";
-import { CounterReducer} from "../counter/counter_reducer";
+import { CounterReducer } from "../counter/counter_reducer";
+import { DraggableAnimal } from "../draggable-animal/draggable-animal";
+import { DragAndDropContainer } from "../drag-and-drop-container/drag-and-drop-container";
+import { listImages } from "../../services/list-images";
 
 interface Chat {
   id: string;
@@ -30,7 +33,6 @@ interface Chat {
 }
 
 const App = (): JSX.Element => {
-
   const dispatch = useDispatch();
   const { incrementByValue } = counterSlice.actions; // Доступ к экшенам
 
@@ -39,7 +41,6 @@ const App = (): JSX.Element => {
     dispatch(incrementByValue(1)); // Используем экшен из слайса
     dispatch(addTodo('Купить молоко')); // Передаём текст задачи
   }, [dispatch]);
-
 
   const [visible, setVisible] = useState(false);
   const [user, setUser] = useState({ name: "Андрей" });
@@ -59,43 +60,58 @@ const App = (): JSX.Element => {
     { id: "id3", name: "name3", lastMessageAt: "lastMessageAt3" },
   ];
 
+  const [elements, setElements] = useState([]);
+
+  React.useEffect(() => {
+    setElements([
+      ...listImages
+    ])
+  }, []);
+
   return (
     <LoginContext.Provider value={loginState}>
-        <ErrorBoundary>
-          <CounterReducer />
-          <Registration />
-          <Counter />
-          <UserPage user={user} updateUserInfo={setUser} />
-          <RandomMovie />
-          <ComponentWithError />
-          <AgreementForm />
-          <Game />
-          <MouseSpy />
-          <Hi name="Рудольф" />
-          <ThemeToggle />
-          <h2>Чаты</h2>
-          {chats.map((chat) => (
-            <ChatWithTools
-              key={chat.id}
-              id={chat.id}
-              name={chat.name}
-              lastMessageAt={chat.lastMessageAt}
-            />
-          ))}
-          <DissatisfiedButton />
-          <VideoPlayer />
-          <AutoPlay />
-          <div className={styles.app}>
-            <button onClick={handleOpenModal}>Открыть модальное окно</button>
-            {visible && (
-              <Modal header="Внимание!" onClose={handleCloseModal}>
-                <p>Спасибо за внимание!</p>
-                <p>Открывай меня, если станет скучно :)</p>
-              </Modal>
-            )}
-          </div>
-          <Header />
-        </ErrorBoundary>
+      <ErrorBoundary>
+        <DragAndDropContainer/>
+        <section className={styles.element}>
+          {
+            elements.map((element) => <DraggableAnimal key={element.id} content={element.content}/>)
+          }
+        </section>
+        <DraggableAnimal/>
+        <CounterReducer/>
+        <Registration/>
+        <Counter/>
+        <UserPage user={user} updateUserInfo={setUser}/>
+        <RandomMovie/>
+        <ComponentWithError/>
+        <AgreementForm/>
+        <Game/>
+        <MouseSpy/>
+        <Hi name="Рудольф"/>
+        <ThemeToggle/>
+        <h2>Чаты</h2>
+        {chats.map((chat) => (
+          <ChatWithTools
+            key={chat.id}
+            id={chat.id}
+            name={chat.name}
+            lastMessageAt={chat.lastMessageAt}
+          />
+        ))}
+        <DissatisfiedButton/>
+        <VideoPlayer/>
+        <AutoPlay/>
+        <div className={styles.app}>
+          <button onClick={handleOpenModal}>Открыть модальное окно</button>
+          {visible && (
+            <Modal header="Внимание!" onClose={handleCloseModal}>
+              <p>Спасибо за внимание!</p>
+              <p>Открывай меня, если станет скучно :)</p>
+            </Modal>
+          )}
+        </div>
+        <Header/>
+      </ErrorBoundary>
     </LoginContext.Provider>
   );
 };
