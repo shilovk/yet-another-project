@@ -13,6 +13,8 @@ import Game from "../game/game";
 import AgreementForm from "../agreement-form/agreement-form";
 import ErrorBoundary from "../error-boundary/error-boundary";
 import ComponentWithError from "../component-with-error/component-with-error";
+import RandomMovie from "../random-movie/random-movie";
+import UserPage from "../user-page/user-page";
 
 class App extends React.Component {
   constructor(props) {
@@ -39,10 +41,14 @@ class App extends React.Component {
       { id: "id2", name: "name2", lastMessageAt: "lastMessageAt2" },
       { id: "id3", name: "name3", lastMessageAt: "lastMessageAt3" },
     ];
+    const [user, setUser] = React.useState({ name: "Андрей" });
+
     return (
       <ErrorBoundary>
         {/* если в компоненте RestOfTheApp или любом его дочернем компоненте */}
         {/* возникнет ошибка, она будет обработана в ErrorBoundary */}
+        <UserPage user={user} updateUserInfo={setUser} />;
+        <RandomMovie />
         <ComponentWithError />
         <AgreementForm/>
         <Game/>
