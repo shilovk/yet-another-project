@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./app.module.css";
 import Header from "../header/header";
 import VideoPlayer from "../video-player/video-player";
@@ -18,6 +18,10 @@ import UserPage from "../user-page/user-page";
 import { LoginContext } from '../../services/login-context.js';
 import Counter from "../counter/counter";
 import {Registration} from "../flight/registration";
+import { counterSlice } from "../../services/actions/counter_slice"
+import {useDispatch} from "react-redux";
+import { addTodo } from "../../services/actions/new_actions";
+import { CounterReducer} from "../counter/counter_reducer";
 
 interface Chat {
   id: string;
@@ -26,6 +30,17 @@ interface Chat {
 }
 
 const App = (): JSX.Element => {
+
+  const dispatch = useDispatch();
+  const { incrementByValue } = counterSlice.actions; // Доступ к экшенам
+
+  useEffect(() => {
+    // Отправляем экшен при монтировании компонента
+    dispatch(incrementByValue(1)); // Используем экшен из слайса
+    dispatch(addTodo('Купить молоко')); // Передаём текст задачи
+  }, [dispatch]);
+
+
   const [visible, setVisible] = useState(false);
   const [user, setUser] = useState({ name: "Андрей" });
   const loginState = useState({ login_name: "login" });
@@ -47,6 +62,7 @@ const App = (): JSX.Element => {
   return (
     <LoginContext.Provider value={loginState}>
         <ErrorBoundary>
+          <CounterReducer />
           <Registration />
           <Counter />
           <UserPage user={user} updateUserInfo={setUser} />

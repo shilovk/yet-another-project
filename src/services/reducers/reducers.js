@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { participantRegistrationReducer } from './flight';
+import { counterReducer} from "../reducers/counter_reducer"
 
 // Начальное состояние и действия для каждого редьюсера
 
@@ -90,5 +91,6 @@ export const rootReducer = combineReducers({
   todoList,      // список дел
   user,          // информация о пользователе
   collaboration, // информация о совместной работе
-  participantRegistration: participantRegistrationReducer // ключ переименован
+  counterReducer,
+  participantRegistration: participantRegistrationReducer, // ключ переименован
 });
