@@ -17,6 +17,7 @@ import RandomMovie from "../random-movie/random-movie";
 import UserPage from "../user-page/user-page";
 import { LoginContext } from '../../services/login-context.js';
 import Counter from "../counter/counter";
+import {Registration} from "../flight/registration";
 
 interface Chat {
   id: string;
@@ -46,6 +47,7 @@ const App = (): JSX.Element => {
   return (
     <LoginContext.Provider value={loginState}>
         <ErrorBoundary>
+          <Registration />
           <Counter />
           <UserPage user={user} updateUserInfo={setUser} />
           <RandomMovie />

@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { participantRegistrationReducer } from './flight';
 
 // Начальное состояние и действия для каждого редьюсера
 
@@ -88,5 +89,6 @@ const collaboration = (state = initialCollaborationState, action) => {
 export const rootReducer = combineReducers({
   todoList,      // список дел
   user,          // информация о пользователе
-  collaboration  // информация о совместной работе
+  collaboration, // информация о совместной работе
+  participantRegistration: participantRegistrationReducer // ключ переименован
 });
