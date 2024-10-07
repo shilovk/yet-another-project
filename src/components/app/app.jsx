@@ -25,6 +25,7 @@ import { CounterReducer } from "../counter/counter_reducer";
 import { DraggableAnimal } from "../draggable-animal/draggable-animal";
 import { DragAndDropContainer } from "../drag-and-drop-container/drag-and-drop-container";
 import { listImages } from "../../services/list-images";
+import { DndProviderContainer } from "../dnd-provider-container/dnd-provider-container";
 
 interface Chat {
   id: string;
@@ -71,6 +72,7 @@ const App = (): JSX.Element => {
   return (
     <LoginContext.Provider value={loginState}>
       <ErrorBoundary>
+        <DndProviderContainer />
         <DragAndDropContainer/>
         <section className={styles.element}>
           {
