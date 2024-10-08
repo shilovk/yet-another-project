@@ -1,0 +1,23 @@
+/* Основной контейнер для приложения */
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Элемент, содержащий доски */
+.element {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Сделаем три столбца для досок */
+  grid-gap: 20px; /* Добавим отступы между досками */
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для досок можно добавить здесь */

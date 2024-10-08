@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import { participantRegistrationReducer } from './flight';
-import { counterReducer} from "../reducers/counter_reducer"
+import { counterReducer} from "./counter-reducer"
+import { dropTargetReducer } from "./drop-target";
+import { draggableAnimalReducer } from "./draggable-animal";
 
 // Начальное состояние и действия для каждого редьюсера
 
@@ -93,4 +95,6 @@ export const rootReducer = combineReducers({
   collaboration, // информация о совместной работе
   counterReducer,
   participantRegistration: participantRegistrationReducer, // ключ переименован
+  animalList: draggableAnimalReducer,
+  boardList: dropTargetReducer
 });

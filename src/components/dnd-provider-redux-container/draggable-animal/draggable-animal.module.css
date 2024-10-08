@@ -1,0 +1,43 @@
+/* draggable-animal.module.css */
+
+/* Стиль для элемента на доске "default" */
+.animalElement {
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 2rem;
+  cursor: grab;
+  transition: opacity 0.3s ease;
+}
+
+/* Стиль для элемента на других досках */
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px;
+  background-color: #e0ffe0;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1.5rem;
+  cursor: grab;
+  transition: opacity 0.3s ease;
+}
+
+/* Стиль для внутреннего содержимого (иконка животного) */
+.animalItem {
+  font-size: 3rem;
+  margin-right: 10px;
+}
+
+/* Стиль для текста описания */
+.item p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}

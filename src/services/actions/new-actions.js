@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit'
 
-export const new_actions = createAction('ACTION_NAME');
+export const newActions = createAction('ACTION_NAME');
 
 
 export const addTodo = createAction('todos/add', function prepare(text) {
