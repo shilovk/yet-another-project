@@ -1,0 +1,43 @@
+/* Основной стиль для доски */
+.board {
+  min-height: 150px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #f9f9f9;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Стиль для животного */
+.animal {
+  display: inline-block;
+  padding: 8px;
+  margin: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 2rem;
+  cursor: grab;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.animal:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Стиль для рамки при перетаскивании */
+.board:hover {
+  border-color: lightgray;
+}
+
+/* Изменение рамки, когда элемент перетаскивается */
+.board.isHover {
+  border-color: lightgreen;
+}

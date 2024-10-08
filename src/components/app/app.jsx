@@ -18,14 +18,15 @@ import UserPage from "../user-page/user-page";
 import { LoginContext } from '../../services/login-context.js';
 import Counter from "../counter/counter";
 import { Registration } from "../flight/registration";
-import { counterSlice } from "../../services/actions/counter_slice";
+import { counterSlice } from "../../services/actions/counter-slice";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../services/actions/new_actions";
-import { CounterReducer } from "../counter/counter_reducer";
+import { addTodo } from "../../services/actions/new-actions";
+import { CounterReducer } from "../counter/counter-reducer";
 import { DraggableAnimal } from "../draggable-animal/draggable-animal";
 import { DragAndDropContainer } from "../drag-and-drop-container/drag-and-drop-container";
 import { listImages } from "../../services/list-images";
 import { DndProviderContainer } from "../dnd-provider-container/dnd-provider-container";
+import { DndProviderReduxContainer } from "../dnd-provider-redux-container/dnd-provider-redux-container";
 
 interface Chat {
   id: string;
@@ -72,6 +73,8 @@ const App = (): JSX.Element => {
   return (
     <LoginContext.Provider value={loginState}>
       <ErrorBoundary>
+        <DndProviderReduxContainer />
+        <hr />
         <DndProviderContainer />
         <DragAndDropContainer/>
         <section className={styles.element}>

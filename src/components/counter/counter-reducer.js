@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { increment, decrement, incrementByAmount } from '../../services/reducers/counter_reducer'; // Ваши экшены
+import { increment, decrement, incrementByAmount } from '../../services/reducers/counter-reducer'; // Ваши экшены
 
 export const CounterReducer = () => {
   const dispatch = useDispatch();
@@ -15,5 +15,3 @@ export const CounterReducer = () => {
     </div>
   );
 };
-
-export default CounterReducer;
